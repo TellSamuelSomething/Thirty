@@ -1,5 +1,8 @@
 package com.example.thirty
 
+//TODO. calculateScore har fortfarande potentiella list fel med removeAt delarna.
+
+//This is a class which manages the calculations and score values for the app.
 class Logic {
     val scoreMap = HashMap<String, Int>()
 
@@ -20,39 +23,47 @@ class Logic {
             }
 
             // Check two dice at once
-            if (unUsedDices.size > 1) {
-                outer@ for (a in unUsedDices.size - 1 downTo 0) {
-                    for (b in a - 1 downTo 0) {
-                        if (unUsedDices[a] + unUsedDices[b] == targetSum) {
-                            highestCombination += 1
-                            unUsedDices.removeAt(a)
-                            unUsedDices.removeAt(b)
-                            break@outer
+            // The while loops here is to control that the algorithm doesn't skip some dice at certain scenarios
+            if (unUsedDices.size > 2) {
+                mainLoop@while (true) {
+                    for (a in unUsedDices.size - 1 downTo 0) {
+                        for (b in a - 1 downTo 0) {
+                            if (unUsedDices[a] + unUsedDices[b] == targetSum) {
+                                highestCombination += 1
+                                unUsedDices.removeAt(a)
+                                unUsedDices.removeAt(b)
+                                continue@mainLoop
+                            }
                         }
                     }
+                    break
                 }
             }
 
             // Check three dice at once
-            if (unUsedDices.size > 2) {
-                outer@ for (a in unUsedDices.size - 1 downTo 0) {
-                    for (b in a - 1 downTo 0) {
-                        for (c in b - 1 downTo 0) {
-                            if (unUsedDices[a] + unUsedDices[b] + unUsedDices[c] == targetSum) {
-                                highestCombination += 1
-                                unUsedDices.removeAt(a)
-                                unUsedDices.removeAt(b)
-                                unUsedDices.removeAt(c)
-                                break@outer
+            // The while loops here is to control that the algorithm doesn't skip some dice at certain scenarios
+            if (unUsedDices.size > 3) {
+                mainLoop@ while (true)  {
+                    for (a in unUsedDices.size - 1 downTo 0) {
+                        for (b in a - 1 downTo 0) {
+                            for (c in b - 1 downTo 0) {
+                                if (unUsedDices[a] + unUsedDices[b] + unUsedDices[c] == targetSum) {
+                                    highestCombination += 1
+                                    unUsedDices.removeAt(a)
+                                    unUsedDices.removeAt(b)
+                                    unUsedDices.removeAt(c)
+                                    continue@mainLoop
+                                }
                             }
                         }
                     }
+                    break
                 }
             }
 
             // Check for four dice at once
-            if (unUsedDices.size > 3) {
-                outer@ for (a in unUsedDices.size - 1 downTo 0) {
+            if (unUsedDices.size > 4) {
+                outer@for (a in unUsedDices.size - 1 downTo 0) {
                     for (b in a - 1 downTo 0) {
                         for (c in b - 1 downTo 0) {
                             for (d in c - 1 downTo 0) {
@@ -71,7 +82,7 @@ class Logic {
             }
 
             // Check five dice at once
-            if (unUsedDices.size > 4) {
+            if (unUsedDices.size > 5) {
                 outer@ for (a in unUsedDices.size - 1 downTo 0) {
                     for (b in a - 1 downTo 0) {
                         for (c in b - 1 downTo 0) {
@@ -95,7 +106,7 @@ class Logic {
 
             // Check six dice at once
             var allTotal = 0
-            if (unUsedDices.size > 5) {
+            if (unUsedDices.size > 6) {
                 for (a in unUsedDices.size - 1 downTo 0) {
                     allTotal += unUsedDices[a]
                 }
@@ -121,10 +132,12 @@ class Logic {
         return highestCombination * targetSum  // Return score from number choice of game. Highest combinations of the chosen target.
     }
 
+    //This function returns the total score for the current round
     fun getTotalScore(): Int {
         return scoreMap.values.sum()
     }
 
+    //This function clears the score hashmap for the class so that it can be reused the next game.
     fun gameIsOver() {
         scoreMap.clear()
     }

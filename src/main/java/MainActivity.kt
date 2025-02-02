@@ -8,6 +8,7 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
+//This class is responsible for all the main activity that is happening in the app
 class MainActivity : AppCompatActivity() {
 
     private val gameLogic = Logic() // Game logic instance

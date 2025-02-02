@@ -15,6 +15,7 @@ import android.widget.RelativeLayout
 import android.widget.Spinner
 import kotlin.random.Random
 
+//This is an object that constructs the front-end objects for the app
 object ViewUtils {
 
     // Array to hold the dice images
@@ -66,7 +67,7 @@ object ViewUtils {
         }
     }
 
-    // Function to create a Button to roll selected dice
+    // Function to create throw button
     @SuppressLint("SetTextI18n")
     fun createRollButton(context: Context): Button {
         return Button(context).apply {
@@ -93,7 +94,7 @@ object ViewUtils {
         }
     }
 
-    // Function to create a Score Button
+    // Function to create choose button
     @SuppressLint("SetTextI18n")
     fun createChooseButton(context: Context): Button {
         return Button(context).apply {
@@ -105,7 +106,7 @@ object ViewUtils {
                 ViewGroup.LayoutParams.WRAP_CONTENT
             ).apply {
                 gravity = Gravity.CENTER_HORIZONTAL
-                topMargin = 50
+                setMargins(0, 50, 0, 0)
             }
 
             setPadding(40, 20, 40, 20) // Increase padding
