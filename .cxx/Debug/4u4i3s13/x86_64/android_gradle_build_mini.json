@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "C:\\Users\\sampa\\AndroidStudioProjects\\Thirty\\app\\src\\main\\cpp\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "C:\\Users\\sampa\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "C:\\Users\\sampa\\AndroidStudioProjects\\Thirty\\app\\.cxx\\Debug\\4u4i3s13\\x86_64",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "C:\\Users\\sampa\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "C:\\Users\\sampa\\AndroidStudioProjects\\Thirty\\app\\.cxx\\Debug\\4u4i3s13\\x86_64",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "thirty::@6890427a1f51a3e7e1df": {
+      "artifactName": "thirty",
+      "abi": "x86_64",
+      "output": "C:\\Users\\sampa\\AndroidStudioProjects\\Thirty\\app\\build\\intermediates\\cxx\\Debug\\4u4i3s13\\obj\\x86_64\\libthirty.so",
+      "runtimeFiles": []
+    }
+  }
+}
